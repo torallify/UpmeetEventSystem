@@ -1,0 +1,12 @@
+<h2>Favorites</h2>
+<div *ngFor="let favoriteEvent of favoriteEvents">
+  <h2>{{favoriteEvent.eventName}}</h2>
+  {{favoriteEvent.topic}}
+  {{favoriteEvent.description}}
+  {{favoriteEvent.location}}
+  <button (click)="delete(favoriteEvent.id)">Remove from favorites</button>
+</div>
+
+<div *ngIf="favoriteEvent?.length===0">
+  Your favorites is empty
+</div>

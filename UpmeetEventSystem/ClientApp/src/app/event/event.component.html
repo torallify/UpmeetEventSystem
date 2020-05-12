@@ -1,0 +1,7 @@
+<h2>Events</h2>
+<div *ngFor="let event of events">
+  <h3>{{event.eventName}} <button (click)="add(event.id)">Add to Favorites</button></h3>
+  <h4>{{event.topic}}</h4>
+  {{event.description}}
+  {{event.location}}
+</div>
