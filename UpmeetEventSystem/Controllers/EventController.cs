@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using UpmeetEventSystem.Models;
 using Dapper;
+using UpmeetEventSystem.Services;
+using UpmeetEventSystem.Models;
 
 namespace UpmeetEventSystem.Controllers
 {
@@ -15,68 +16,41 @@ namespace UpmeetEventSystem.Controllers
     [ApiController]
     public class EventController : ControllerBase
     {
-        private string connString;
+        private DAL dal;
 
         public EventController(IConfiguration config)
         {
-            connString = config.GetConnectionString("default");
+            dal = new DAL(config);
         }
 
         // get: all the events
         [HttpGet]
         public IEnumerable<Event> Get()
         {
-            SqlConnection conn = new SqlConnection(connString);
-            string command = "SELECT * FROM UpMeetEvents";
-
-            IEnumerable<Event> result = conn.Query<Event>(command);
-
-            conn.Close();
-
-            return result;
+            return dal.GetAllEvents();
         }
 
         // getDetail: all the info on one event
         [HttpGet("{id}")] // /api/1
         public Event GetDetail(int id)
         {
-            SqlConnection conn = new SqlConnection(connString);
-            string command = "SELECT * FROM UpMeetEvents WHERE ID=@id";
-
-            Event result = conn.QueryFirst<Event>(command, new { id = id });
-
-            conn.Close();
-
-            return result;
+            return dal.GetDetail(id);
         }
 
         //getTopics: Just returns the category names (DISTINCT)
         [HttpGet("topics")] // /api/topics
-        public IEnumerable<string> GetCategories()
+        public IEnumerable<string> GetTopics()
         {
-            SqlConnection conn = new SqlConnection(connString);
-            string command = "SELECT DISTINCT Topic FROM UpMeetEvents";
-
-            IEnumerable<string> result = conn.Query<string>(command);
-
-            conn.Close();
-
-            return result;
+            return dal.GetTopics();
         }
 
         // getByCategory: all the info on events within a given category
         [HttpGet("topics/{top}")] //  /api/menu/categories/entrees
         public IEnumerable<Event> GetByTopic(string top)
         {
-            SqlConnection conn = new SqlConnection(connString);
-            string command = "SELECT * FROM UpMeetEvents WHERE Topic=@topic";
-
-            IEnumerable<Event> result = conn.Query<Event>(command,
-                new { topic = top });
-
-            conn.Close();
-
-            return result;
+            return dal.GetByTopic(top);
         }
+
+
     }
 }
