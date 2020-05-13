@@ -10,6 +10,7 @@ import { EventComponent } from './event/event.component';
 import { FavoriteEventComponent } from './favorite-event/favorite-event.component';
 import { EventDataService } from '../event-data.service';
 import { FavoriteEventDataService } from '../favorite-event-data.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FavoriteEventDataService } from '../favorite-event-data.service';
     AppComponent,
     NavMenuComponent,
     EventComponent,
-    FavoriteEventComponent
+    FavoriteEventComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -25,7 +27,9 @@ import { FavoriteEventDataService } from '../favorite-event-data.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: EventComponent },
-      { path: 'favorite', component: FavoriteEventComponent }
+      { path: 'favorite', component: FavoriteEventComponent },
+      { path: '**', component:PageNotFoundComponent}
+      
     ])
   ],
   providers: [EventDataService, FavoriteEventDataService],
