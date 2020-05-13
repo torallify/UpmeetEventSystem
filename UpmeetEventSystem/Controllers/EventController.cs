@@ -58,6 +58,5 @@ namespace UpmeetEventSystem.Controllers
             return result;
         }
 
-
     }
 }

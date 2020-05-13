@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { EventDataService } from '../../event-data.service';
 import { FavoriteEventDataService } from '../../favorite-event-data.service';
 import { Event } from '../interfaces/event';
+import { JoinedEvent } from '../interfaces/favorite';
 
 @Component({
     selector: 'app-event',
@@ -18,6 +19,7 @@ export class EventComponent {
   newDescription: string;
   newLocation: string;
   events: Event[];
+  favoritesFlag: boolean = false;
 
   ngOnInit() {
     //this.eventData.getEvents().subscribe(
@@ -41,11 +43,14 @@ export class EventComponent {
 
   async addNewEvent() {
     await this.eventData.addNewEvent({ eventName: this.newName, topic: this.newTopic, description: this.newDescription, location: this.newLocation } as Event)
-
     this.updateEvents()
     this.newName = ""
     this.newTopic = ""
     this.newDescription = ""
     this.newLocation = ""
+  }
+
+  addedToFavoritesFlag = function (): void {
+    this.favoritesFlag = !this.favoritesFlag;
   }
 }
