@@ -1,12 +1,23 @@
-<h2>Favorites</h2>
-<div *ngFor="let favoriteEvent of favoriteEvents">
-  <h2>{{favoriteEvent.eventName}}</h2>
-  {{favoriteEvent.topic}}
-  {{favoriteEvent.description}}
-  {{favoriteEvent.location}}
-  <button (click)="delete(favoriteEvent.id)">Remove from favorites</button>
-</div>
+<h1 style="text-align: center; padding: 30px;">Favorite Events</h1>
+<div style="margin-bottom:100px" class="accordion" id="accordionExample">
+  <div class="card" *ngFor="let favoriteEvent of favoriteEvents; let i = index">
+    <div class="card-header" [id]="'heading'+i">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+          <h3>{{favoriteEvent.eventName}}</h3>
+        </button>
+      </h2>
+    </div>
+    <div [id]="'collapse'+i" class="collapse" [attr.aria-labelledby]="'heading'+i" data-parent="#accordionExample">
+      <div class="card-body">
+        <h4>{{favoriteEvent.topic}}</h4>
+        {{favoriteEvent.description}}
+        {{favoriteEvent.location}}<br />
+        <button (click)="delete(favoriteEvent.id)">Remove from favorites</button>
+      </div>
+    </div>
+  </div>
 
-<div *ngIf="favoriteEvent?.length===0">
-  Your favorites is empty
-</div>
+  <div *ngIf="favoriteEvent?.length===0">
+    Your favorites is empty
+  </div>

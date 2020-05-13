@@ -67,6 +67,15 @@ namespace UpmeetEventSystem.Services
             return result;
         }
 
+        public int AddEvent(Event newEvent)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            string command = "INSERT INTO UpMeetEvents (EventName, Topic, Description, Location) ";
+            command += "VALUES (@EventName, @Topic, @Description, @Location)";
+
+            return conn.Execute(command, newEvent);
+        }
+
         public IEnumerable<JoinedEvent> GetAllFavoriteEvents(int id)
         {
             SqlConnection conn = new SqlConnection(connString);
@@ -119,5 +128,7 @@ namespace UpmeetEventSystem.Services
                 success = result == 1 ? true : false
             };
         }
+
+       
     }
 }

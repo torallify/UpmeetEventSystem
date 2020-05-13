@@ -51,6 +51,13 @@ namespace UpmeetEventSystem.Controllers
             return dal.GetByTopic(top);
         }
 
+        [HttpPost]
+        public int AddEvent(Event newEvent)
+        {
+            int result = dal.AddEvent(newEvent);
+            return result;
+        }
+
 
     }
 }
