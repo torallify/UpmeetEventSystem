@@ -26,6 +26,7 @@
   padding: 0;
 }
 
+
 .myaccordion .btn-link:hover,
 .myaccordion .btn-link:focus {
   text-decoration: none;
@@ -33,4 +34,8 @@
 
 .myaccordion li + li {
   margin-top: 10px;
+}
+
+.button {
+  color: white;
 }

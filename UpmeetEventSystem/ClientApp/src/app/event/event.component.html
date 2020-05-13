@@ -14,7 +14,7 @@
           <h4>Topic: {{event.topic}}</h4>
           Description: {{event.description}}<br />
           Location: {{event.location}}<br />
-          <button (click)="add(event.id)">Add to Favorites</button>
+          <button (click)="add(event.id)" >Add to Favorites</button>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
             Topic: <input type="text" id="topic" [(ngModel)]="newTopic" class="form-control"><br />
             Description: <input type="text" id="description" [(ngModel)]="newDescription" class="form-control"><br />
             Location: <input type="text" id="location" [(ngModel)]="newLocation" class="form-control"><br />
-            <button (click)="addNewEvent()" class="btn btn-success btn-block" type="submit">Add Event</button>
+            <button (click)="addNewEvent()" class="btn btn-outline-info btn-block" type="submit">Add Event</button>
           </div>
         </div>
       </div>
