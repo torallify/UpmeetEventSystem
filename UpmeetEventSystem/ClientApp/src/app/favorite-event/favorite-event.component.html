@@ -1,5 +1,6 @@
-<h1 style="text-align: center; padding: 30px;">Favorite Events</h1>
-<div style="margin-bottom:100px" class="accordion" id="accordionExample">
+
+<h1 style="text-align: center; padding: 1px; color: mediumturquoise; margin-top: 130px">Favorite Events</h1>
+<div style="margin-bottom:100px" class="myaccordion" id="accordionExample">
   <div class="card" *ngFor="let favoriteEvent of favoriteEvents; let i = index">
     <div class="card-header" [id]="'heading'+i">
       <h2 class="mb-0">
@@ -10,14 +11,25 @@
     </div>
     <div [id]="'collapse'+i" class="collapse" [attr.aria-labelledby]="'heading'+i" data-parent="#accordionExample">
       <div class="card-body">
-        <h4>{{favoriteEvent.topic}}</h4>
-        {{favoriteEvent.description}}
-        {{favoriteEvent.location}}<br />
+        <h4>Topic: {{favoriteEvent.topic}}</h4>
+        Description: {{favoriteEvent.description}}<br />
+        Location: {{favoriteEvent.location}}<br />
         <button (click)="delete(favoriteEvent.id)">Remove from favorites</button>
       </div>
     </div>
   </div>
+</div>
 
-  <div *ngIf="favoriteEvents.length===0">
-    <h2 style="text-align: center; padding: 30px; color:blue">Your favorites is empty</h2>
+  <div *ngIf="favoriteEvents.length===0"
+        style="background-color: white;
+        max-width: 400px;
+        margin: 125px auto;
+        border-radius: 10px;
+        border: 5px;
+        border-color: mediumturquoise;
+        border-style: solid;
+        font-family: 'Century Gothic';
+        ">
+    <h2 style="text-align: center; padding: 1px; color: black; border-radius: 30px;">Your favorites is empty!</h2>
   </div>
+

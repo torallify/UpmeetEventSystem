@@ -73,7 +73,20 @@ namespace UpmeetEventSystem.Services
             string command = "INSERT INTO UpMeetEvents (EventName, Topic, Description, Location) ";
             command += "VALUES (@EventName, @Topic, @Description, @Location)";
 
+            conn.Close();
+
             return conn.Execute(command, newEvent);
+        }
+
+        public int EditEvent(Event editEvent)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            string command = "UPDATE UpMeetEvents SET EventName = @EventName, Topic = @Topic, Description = @Description, Location = @Location) ";
+            command += "WHERE Id = @Id";
+
+            conn.Close();
+
+            return conn.Execute(command, editEvent);
         }
 
         public IEnumerable<JoinedEvent> GetAllFavoriteEvents(int id)

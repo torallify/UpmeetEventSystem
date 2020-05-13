@@ -1,5 +1,6 @@
-<h1 style="text-align: center; padding: 30px;">Events</h1>
-  <div style="margin-bottom:100px" class="accordion" id="accordionExample">
+<div>
+  <h1 style="text-align: center; padding: 1px; color: mediumturquoise; font-family: 'Century Gothic'; margin-top: 130px ">Events</h1>
+  <div style="margin-bottom:100px;" class="myaccordion" id="accordionExample">
     <div class="card" *ngFor="let event of events; let i = index">
       <div class="card-header" [id]="'heading'+i">
         <h2 class="mb-0">
@@ -10,33 +11,32 @@
       </div>
       <div [id]="'collapse'+i" class="collapse" [attr.aria-labelledby]="'heading'+i" data-parent="#accordionExample">
         <div class="card-body">
-          <h4>{{event.topic}}</h4>
-          {{event.description}}
-          {{event.location}}<br />
+          <h4>Topic: {{event.topic}}</h4>
+          Description: {{event.description}}<br />
+          Location: {{event.location}}<br />
           <button (click)="add(event.id)">Add to Favorites</button>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-header" id="headingTwo">
-        <h2 class="mb-0">
-          <button style="width:100%; text-align:center" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-           <h3><strong>Add New Event</strong></h3>
-          </button>
-        </h2>
-      </div>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-        <div class="card-body">
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button style="width:100%; text-align:center;" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <h3><strong>Add New Event</strong></h3>
+            </button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
             Name: <input type="text" id="eventName" [(ngModel)]="newName" class="form-control"><br />
             Topic: <input type="text" id="topic" [(ngModel)]="newTopic" class="form-control"><br />
             Description: <input type="text" id="description" [(ngModel)]="newDescription" class="form-control"><br />
             Location: <input type="text" id="location" [(ngModel)]="newLocation" class="form-control"><br />
             <button (click)="addNewEvent()" class="btn btn-success btn-block" type="submit">Add Event</button>
+          </div>
         </div>
       </div>
-    </div>
   </div>
-
-
+</div>
 
 
