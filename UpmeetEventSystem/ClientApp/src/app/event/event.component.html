@@ -14,8 +14,7 @@
           <h4>Topic: {{event.topic}}</h4>
           Description: {{event.description}}<br />
           Location: {{event.location}}<br />
-          <button [hidden]="favoritesFlag" *ngIf="!favoritesFlag" (click)="add(event.id); addedToFavoritesFlag()" >Add to Favorites</button>
-          <button [hidden]="!favoritesFlag" *ngIf="favoritesFlag" >Added to Favorites</button>
+          <button (click)="add(event.id)">Add to Favorites</button>
         </div>
       </div>
     </div>

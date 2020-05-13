@@ -19,7 +19,6 @@ export class EventComponent {
   newDescription: string;
   newLocation: string;
   events: Event[];
-  favoritesFlag: boolean = false;
 
   ngOnInit() {
     //this.eventData.getEvents().subscribe(
@@ -48,9 +47,5 @@ export class EventComponent {
     this.newTopic = ""
     this.newDescription = ""
     this.newLocation = ""
-  }
-
-  addedToFavoritesFlag = function (): void {
-    this.favoritesFlag = !this.favoritesFlag;
   }
 }
