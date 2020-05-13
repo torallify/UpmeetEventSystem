@@ -2,7 +2,7 @@
 
 /* Provide sufficient contrast against white background */
 html {
-  background-image: url('https://cdn.hipwallpaper.com/i/14/45/G4pRvQ.jpg');
+  background-image: url('src/assets/stars.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
